@@ -1,17 +1,15 @@
-require('dotenv').config()
-const express = require("express")
+const express = require('express')
 const connectToDb = require('./db/db')
-const authRoutes = require("./routes/auth.routes")
+const authRoute = require('./routes/auth.route')
 const cookieParser = require('cookie-parser')
+const postRoute = require('./routes/post.route')
 
 const app = express()
-connectToDb()
-
 app.use(express.json())
+connectToDb()
 app.use(cookieParser())
 
-//authentication 
-app.use('/auth',authRoutes)
-
+app.use('/auth',authRoute)
+app.use('/post',postRoute)
 
 module.exports = app
