@@ -1,15 +1,13 @@
-const  { GoogleGenAI } = require("@google/genai");
+const { GoogleGenAI } = require("@google/genai");
 
-const ai = new GoogleGenAI({
-    apiKey:"AIzaSyDj1ycc1id-epz4PAbfVHnAhK3q7wTzXRM"
-});
+const ai = new GoogleGenAI({});
 
-async function main() {
-  const response = await ai.models.generateContent({
-    model: "gemini-2.5-flash",
-    contents: "Explain how AI works in a few words",
+async function genrateText(chatHistory) {
+      const response = await ai.models.generateContent({
+        model: "gemini-2.0-flash",
+        contents: chatHistory,
   });
-  console.log(response.text);
+  return response.text;
 }
 
-main();
+module.exports = genrateText
