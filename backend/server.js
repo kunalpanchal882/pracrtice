@@ -24,7 +24,7 @@ io.on("connection", (socket) => {
       role: "user",
       parts: [{ text: data }],
     });
-
+    // ai response
     const response = await genrateText(chatHistory);
 
     chatHistory.push({
